@@ -37,7 +37,7 @@
             "default": ".keywords",
             "description": "Specifies the relative path to the file containing keywords. This file will be read to identify the jump targets."
           },
-          "bounce-marks.paceholder": {
+          "bounce-marks.placeholder": {
             "type": "string",
             "default": "$0",
             "description": "Defines a placeholder string used within keywords. The placeholder indicates the cursor's position after a jump."

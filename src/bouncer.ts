@@ -2,6 +2,9 @@ import * as vscode from "vscode";
 import * as fs from "fs";
 import * as path from "path";
 
+export const DEFAULT_SRC_NAME = ".keywords";
+export const DEFAULT_PLACEHOLDER = "$0";
+
 interface Keyword {
   text: string;
   cursorOffset: number;
@@ -13,8 +16,8 @@ export class Bouncer {
   private keywords: Keyword[] = [];
 
   constructor(config: vscode.WorkspaceConfiguration) {
-    this.src = config.get("src") || "";
-    this.placeholder = config.get("placeholder") || "";
+    this.src = config.get("src") || DEFAULT_SRC_NAME;
+    this.placeholder = config.get("placeholder") || DEFAULT_PLACEHOLDER;
     this.loadKeywords();
   }
 
@@ -26,7 +29,7 @@ export class Bouncer {
     }
 
     if (this.src == "") {
-      vscode.window.showInformationMessage(`src file not specified.`);
+      vscode.window.showInformationMessage("src file not specified.");
       return;
     }
     const rootPath = workspaceFolders[0].uri.fsPath;
