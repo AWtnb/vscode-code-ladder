@@ -1,6 +1,10 @@
 {
   "name": "bounce-marks",
   "displayName": "bounce-marks",
+  "publisher": "awtnb",
+  "repository": {
+    "url": "https://github.com/AWtnb/vscode-bounce-marks"
+  },
   "description": "Quickly move cursor to specific keywords defined in an external file",
   "version": "0.0.1",
   "engines": {
