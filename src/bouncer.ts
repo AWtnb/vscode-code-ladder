@@ -75,6 +75,7 @@ export class Bouncer {
 
       for (const keyword of this.keywords) {
         const wordStart = line.indexOf(keyword.text);
+
         if (wordStart != -1) {
           const lineStart = currentOffset + lineOffset;
           const matchStart = lineStart + wordStart;
@@ -87,6 +88,7 @@ export class Bouncer {
             const c = document.positionAt(matchStart + keyword.cursorOffset);
             newSel = new vscode.Selection(c, c);
           }
+
           break lineLoop;
         }
       }
@@ -122,10 +124,16 @@ export class Bouncer {
 
       for (const keyword of this.keywords) {
         const wordStart = line.lastIndexOf(keyword.text);
+
         if (wordStart != -1) {
           const lineStart = lineOffset - line.length;
           const matchStart = lineStart + wordStart;
           const matchEnd = matchStart + keyword.text.length;
+
+          if (matchEnd === currentOffset || matchStart === currentOffset) {
+            continue;
+          }
+
           if (keyword.cursorOffset == -1) {
             const s = document.positionAt(matchStart);
             const e = document.positionAt(matchEnd);
@@ -134,6 +142,7 @@ export class Bouncer {
             const c = document.positionAt(matchStart + keyword.cursorOffset);
             newSel = new vscode.Selection(c, c);
           }
+
           break lineLoop;
         }
       }
