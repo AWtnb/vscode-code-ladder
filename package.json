@@ -23,6 +23,24 @@
         "title": "jump to previous keyword",
         "category": "bounce-marks"
       }
+    ],
+    "configuration": [
+      {
+        "title": "",
+        "properties": {}
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "bounce-marks.jumpNext",
+        "key": "alt+n",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "bounce-marks.jumpPrevious",
+        "key": "alt+shift+n",
+        "when": "editorTextFocus"
+      }
     ]
   },
   "scripts": {
@@ -44,3 +62,4 @@
     "@vscode/test-electron": "^2.5.2"
   }
 }
+
