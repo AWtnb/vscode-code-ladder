@@ -13,7 +13,7 @@ export class Bouncer {
   private keywords: Keyword[] = [];
 
   constructor(src: string, placeholder: string = "$0") {
-    this.src = src;
+    this.src = src.trim();
     this.placeholder = placeholder;
     this.loadKeywords();
   }
@@ -25,14 +25,18 @@ export class Bouncer {
       return;
     }
 
+    if (this.src == "") {
+      vscode.window.showInformationMessage(`src file not specified.`);
+      return;
+    }
     const rootPath = workspaceFolders[0].uri.fsPath;
-    const keywordsFilePath = path.join(rootPath, this.src);
-    if (!fs.existsSync(keywordsFilePath)) {
+    const srcPath = path.join(rootPath, this.src);
+    if (!fs.existsSync(srcPath)) {
       vscode.window.showInformationMessage(`src file \`${this.src}\` not found in the root of this workspace.`);
       return;
     }
 
-    const content = fs.readFileSync(keywordsFilePath, "utf8");
+    const content = fs.readFileSync(srcPath, "utf8");
     content
       .replaceAll("\r", "")
       .split("\n")

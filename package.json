@@ -9,6 +9,10 @@
   "categories": [
     "Other"
   ],
+  "keywords": [
+    "cursor-jumper",
+    "search-utils"
+  ],
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
@@ -26,8 +30,19 @@
     ],
     "configuration": [
       {
-        "title": "",
-        "properties": {}
+        "title": "bounce-marks",
+        "properties": {
+          "bounce-marks.src": {
+            "type": "string",
+            "default": ".keywords",
+            "description": "Specifies the relative path to the file containing keywords. This file will be read to identify the jump targets."
+          },
+          "bounce-marks.paceholder": {
+            "type": "string",
+            "default": "$0",
+            "description": "Defines a placeholder string used within keywords. The placeholder indicates the cursor's position after a jump."
+          }
+        }
       }
     ],
     "keybindings": [

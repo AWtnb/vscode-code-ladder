@@ -3,7 +3,11 @@ import * as vscode from "vscode";
 import { Bouncer } from "./bouncer";
 
 export function activate(context: vscode.ExtensionContext) {
-  const BOUNCER = new Bouncer(".keywords", "$0");
+  const config = vscode.workspace.getConfiguration("bounce-marks");
+  const srcName: string = config.get("src") || "";
+  const placeholder: string = config.get("placeholder") || "";
+
+  const BOUNCER = new Bouncer(srcName, placeholder);
 
   [
     vscode.commands.registerTextEditorCommand("bounce-marks.jumpNext", (editor: vscode.TextEditor) => {
