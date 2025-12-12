@@ -6,7 +6,7 @@ import { Bouncer, DEFAULT_SRC_NAME } from "./bouncer";
 
 export function activate(context: vscode.ExtensionContext) {
   let bouncer: Bouncer | null = null;
-  const config = vscode.workspace.getConfiguration("bounce-marks");
+  const config = vscode.workspace.getConfiguration("code-ladder");
   const srcName: string = config.get("src") || DEFAULT_SRC_NAME;
 
   const workspaceFolders = vscode.workspace.workspaceFolders;
@@ -39,14 +39,14 @@ export function activate(context: vscode.ExtensionContext) {
   }
 
   [
-    vscode.commands.registerTextEditorCommand("bounce-marks.jumpNext", (editor: vscode.TextEditor) => {
+    vscode.commands.registerTextEditorCommand("code-ladder.jumpNext", (editor: vscode.TextEditor) => {
       if (bouncer) {
         bouncer.jumpToNextKeyword(editor);
       } else {
         vscode.window.showErrorMessage("Bouncer is not initialized. Verify your configuration or reload workspace.");
       }
     }),
-    vscode.commands.registerTextEditorCommand("bounce-marks.jumpPrevious", (editor: vscode.TextEditor) => {
+    vscode.commands.registerTextEditorCommand("code-ladder.jumpPrevious", (editor: vscode.TextEditor) => {
       if (bouncer) {
         bouncer.jumpToPreviousKeyword(editor);
       } else {
@@ -59,4 +59,3 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 export function deactivate() {}
-

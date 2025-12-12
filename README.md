@@ -1,4 +1,4 @@
-# vscode-bounce-marks README
+# vscode-code-ladder README
 
 A VSCode extension that helps you jump to specific keywords defined in an external file. With this extension, you can navigate document text based on predefined keywords and cursor positions by using `$0` placeholders within those keywords.
 
@@ -15,8 +15,8 @@ A VSCode extension that helps you jump to specific keywords defined in an extern
 
 ```json
 {
-  "bounce-marks.src": ".keywords",
-  "bounce-marks.placeholder": "$0"
+  "code-ladder.src": ".keywords",
+  "code-ladder.placeholder": "$0"
 }
 ```
 
@@ -42,11 +42,11 @@ Text-$0: "$0"
 This extension provides the following commands:
 
 1. **Bounce Marks: Jump to Next Keyword**  
-   - **Command ID**: `bounce-marks.jumpNext`  
+   - **Command ID**: `code-ladder.jumpNext`  
    - Searches for the next keyword in the document and moves the cursor to the specified position.
 
 2. **Bounce Marks: Jump to Previous Keyword**  
-   - **Command ID**: `bounce-marks.jumpPrevious`  
+   - **Command ID**: `code-ladder.jumpPrevious`  
    - Searches upwards for the previous keyword in the document and moves the cursor to the specified position.
 
 ---

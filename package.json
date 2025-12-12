@@ -1,10 +1,10 @@
 {
-  "name": "bounce-marks",
-  "displayName": "bounce-marks",
+  "name": "code-ladder",
+  "displayName": "code-ladder",
   "publisher": "awtnb",
   "icon": "images/logo.png",
   "repository": {
-    "url": "https://github.com/AWtnb/vscode-bounce-marks"
+    "url": "https://github.com/AWtnb/vscode-code-ladder"
   },
   "description": "Quickly move cursor to specific keywords defined in an external file",
   "version": "0.0.1",
@@ -23,26 +23,26 @@
   "contributes": {
     "commands": [
       {
-        "command": "bounce-marks.jumpNext",
+        "command": "code-ladder.jumpNext",
         "title": "jump to next keyword",
-        "category": "bounce-marks"
+        "category": "code-ladder"
       },
       {
-        "command": "bounce-marks.jumpPrevious",
+        "command": "code-ladder.jumpPrevious",
         "title": "jump to previous keyword",
-        "category": "bounce-marks"
+        "category": "code-ladder"
       }
     ],
     "configuration": [
       {
-        "title": "bounce-marks",
+        "title": "code-ladder",
         "properties": {
-          "bounce-marks.src": {
+          "code-ladder.src": {
             "type": "string",
             "default": ".keywords",
             "description": "Specifies the relative path to the file containing keywords. This file will be read to identify the jump targets."
           },
-          "bounce-marks.placeholder": {
+          "code-ladder.placeholder": {
             "type": "string",
             "default": "$0",
             "description": "Defines a placeholder string used within keywords. The placeholder indicates the cursor's position after a jump."
@@ -52,12 +52,12 @@
     ],
     "keybindings": [
       {
-        "command": "bounce-marks.jumpNext",
+        "command": "code-ladder.jumpNext",
         "key": "alt+n",
         "when": "editorTextFocus"
       },
       {
-        "command": "bounce-marks.jumpPrevious",
+        "command": "code-ladder.jumpPrevious",
         "key": "alt+shift+n",
         "when": "editorTextFocus"
       }
