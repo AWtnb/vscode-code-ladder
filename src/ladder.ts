@@ -10,7 +10,7 @@ interface Keyword {
   cursorOffsets: number[];
 }
 
-export class Bouncer {
+export class Navigator {
   private readonly src: string;
   private readonly placeholder: string;
   private keywords: Keyword[] = [];

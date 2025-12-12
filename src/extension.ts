@@ -2,10 +2,10 @@ import * as vscode from "vscode";
 import * as fs from "fs";
 import * as path from "path";
 
-import { Bouncer, DEFAULT_SRC_NAME } from "./bouncer";
+import { Navigator, DEFAULT_SRC_NAME } from "./ladder";
 
 export function activate(context: vscode.ExtensionContext) {
-  let bouncer: Bouncer | null = null;
+  let nav: Navigator | null = null;
   const config = vscode.workspace.getConfiguration("code-ladder");
   const srcName: string = config.get("src") || DEFAULT_SRC_NAME;
 
@@ -15,24 +15,24 @@ export function activate(context: vscode.ExtensionContext) {
     const srcPath = path.join(rootPath, srcName);
 
     if (fs.existsSync(srcPath)) {
-      bouncer = new Bouncer(config);
+      nav = new Navigator(config);
     }
 
     const watcher = vscode.workspace.createFileSystemWatcher(srcPath);
 
     watcher.onDidChange(() => {
       vscode.window.showInformationMessage("Keywords source file updated. Reloading...");
-      bouncer = new Bouncer(config);
+      nav = new Navigator(config);
     });
 
     watcher.onDidDelete(() => {
       vscode.window.showWarningMessage("Keywords source file deleted. Jump functionality may not work.");
-      bouncer = null;
+      nav = null;
     });
 
     watcher.onDidCreate(() => {
       vscode.window.showInformationMessage("Keywords source file created. Reloading...");
-      bouncer = new Bouncer(config);
+      nav = new Navigator(config);
     });
 
     context.subscriptions.push(watcher);
@@ -40,17 +40,17 @@ export function activate(context: vscode.ExtensionContext) {
 
   [
     vscode.commands.registerTextEditorCommand("code-ladder.jumpNext", (editor: vscode.TextEditor) => {
-      if (bouncer) {
-        bouncer.jumpToNextKeyword(editor);
+      if (nav) {
+        nav.jumpToNextKeyword(editor);
       } else {
-        vscode.window.showErrorMessage("Bouncer is not initialized. Verify your configuration or reload workspace.");
+        vscode.window.showErrorMessage("Navigator is not initialized. Verify your configuration or reload workspace.");
       }
     }),
     vscode.commands.registerTextEditorCommand("code-ladder.jumpPrevious", (editor: vscode.TextEditor) => {
-      if (bouncer) {
-        bouncer.jumpToPreviousKeyword(editor);
+      if (nav) {
+        nav.jumpToPreviousKeyword(editor);
       } else {
-        vscode.window.showErrorMessage("Bouncer is not initialized. Verify your configuration or reload workspace.");
+        vscode.window.showErrorMessage("Navigator is not initialized. Verify your configuration or reload workspace.");
       }
     }),
   ].forEach((disposable) => {

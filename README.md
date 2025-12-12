@@ -41,12 +41,9 @@ Text-$0: "$0"
 
 This extension provides the following commands:
 
-1. **Bounce Marks: Jump to Next Keyword**  
-   - **Command ID**: `code-ladder.jumpNext`  
+- **Command ID**: `code-ladder.jumpNext`  
    - Searches for the next keyword in the document and moves the cursor to the specified position.
-
-2. **Bounce Marks: Jump to Previous Keyword**  
-   - **Command ID**: `code-ladder.jumpPrevious`  
+- **Command ID**: `code-ladder.jumpPrevious`  
    - Searches upwards for the previous keyword in the document and moves the cursor to the specified position.
 
 ---
