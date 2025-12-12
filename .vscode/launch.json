@@ -6,7 +6,7 @@
       "name": "Run Extension",
       "type": "extensionHost",
       "request": "launch",
-      "args": ["--disable-extensions", "--extensionDevelopmentPath=${workspaceFolder}", "--folder-uri=file:///${env:USERPROFILE}/Desktop"],
+      "args": ["--disable-extensions", "--extensionDevelopmentPath=${workspaceFolder}", "--folder-uri=file:///${env:USERPROFILE}/Desktop/dev"],
       "outFiles": ["${workspaceFolder}/out/**/*.js"],
       "preLaunchTask": "${defaultBuildTask}",
       "skipFiles": ["**/app/out/vs/**"]
